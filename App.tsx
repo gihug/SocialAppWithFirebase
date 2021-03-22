@@ -1,23 +1,9 @@
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import React from 'react';
-import LoginScreen from './src/screens/login-screen/LoginScreen';
-import OnboardingScreen from './src/screens/onboarding-screen/OnboardingScreen';
+/* eslint-disable react/react-in-jsx-scope */
 import 'react-native-gesture-handler';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-
-const AppStack = createStackNavigator();
+import React from 'react';
+import Providers from './src/navigations/Index';
 
 const App = () => {
-  return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <AppStack.Navigator headerMode="none">
-          <AppStack.Screen name="Onboarding" component={OnboardingScreen} />
-          <AppStack.Screen name="Login" component={LoginScreen} />
-        </AppStack.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
-  );
+  return <Providers />;
 };
 export default App;
