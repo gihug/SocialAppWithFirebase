@@ -9,11 +9,14 @@ import {
   View,
 } from 'react-native';
 import styles from './LoginScreen.css';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const LoginScreen = () => {
   return (
     <View>
-      <Text>Login</Text>
+      <Text>
+        Login <AntDesign name="user" size={36} color="#4F8EF7" />
+      </Text>
     </View>
   );
 };
