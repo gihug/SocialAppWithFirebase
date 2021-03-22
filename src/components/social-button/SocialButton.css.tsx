@@ -14,10 +14,8 @@ export default StyleSheet.create<Style>({
     marginTop: 10,
     width: '100%',
     height: windowHeight / 15,
-    backgroundColor: '#2e64e5',
     padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'row',
     borderRadius: 3,
   },
   buttonText: {
