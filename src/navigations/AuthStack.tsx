@@ -1,8 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect} from 'react';
+import {View} from 'react-native';
 import LoginScreen from '../screens/login-screen/LoginScreen';
 import OnboardingScreen from '../screens/onboarding-screen/OnboardingScreen';
+import SignupScreen from '../screens/SignupScreen/SignupScreen';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const Stack = createStackNavigator();
 
@@ -41,7 +44,29 @@ const AuthStack = () => {
         component={LoginScreen}
         options={{header: () => null}}
       />
-      {/* <Stack.Screen name="Signup" component={} /> */}
+      <Stack.Screen
+        name="Signup"
+        component={SignupScreen}
+        options={({navigation}) => ({
+          title: 'Go back login screen',
+          headerStyle: {
+            backgroundColor: '#f9fafd', // chỗ này để cho đồng màu với component bên dưới
+            shadowColor: '#f9fafd', //
+            elevation: 0, //
+          },
+          headerLeft: () => (
+            <View style={{marginLeft: 10}}>
+              <FontAwesome.Button
+                name="long-arrow-left"
+                size={25}
+                backgroundColor="#f9fafd"
+                color="#333"
+                onPress={() => navigation.navigate('Login')}
+              />
+            </View>
+          ),
+        })}
+      />
     </Stack.Navigator>
   );
 };

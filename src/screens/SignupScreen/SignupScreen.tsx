@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useState} from 'react';
 import {
   Alert,
@@ -12,19 +11,15 @@ import {
 import FormButton from '../../components/form-button/FormButton';
 import FormInput from '../../components/form-input/FormInput';
 import SocialButton from '../../components/social-button/SocialButton';
-import styles from './LoginScreen.css';
+import styles from './SignupScreen.css';
 
-const LoginScreen = ({navigation}: any) => {
+const SignupScreen = ({navigation}: any) => {
   const [email, setEmail] = useState<String>();
   const [password, setPassword] = useState<String>();
-
+  const [confirmPassword, setConfirmPassword] = useState<String>();
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../assets/img/gihug.png')}
-        style={styles.logo}
-      />
-      <Text style={styles.text}>Manchester United</Text>
+      <Text style={styles.text}>Create an account</Text>
 
       <FormInput
         labelValue={email}
@@ -43,17 +38,23 @@ const LoginScreen = ({navigation}: any) => {
         secureTextEntry={true}
       />
 
-      <FormButton
-        buttonTitle="Sign In"
-        onPress={() => Alert.alert('Sign in Clicked!')}
+      <FormInput
+        labelValue={confirmPassword}
+        onChangeText={(confirmPassword: string) =>
+          setConfirmPassword(confirmPassword)
+        }
+        placeholderText="Confirm Password"
+        iconType="lock"
+        secureTextEntry={true}
       />
 
-      <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
-        <Text style={styles.navButtonText}>Forgot Password?</Text>
-      </TouchableOpacity>
+      <FormButton
+        buttonTitle="Sign up"
+        onPress={() => Alert.alert('Sign up Clicked!')}
+      />
 
       <SocialButton
-        buttonTitle="Sign in with Facebook"
+        buttonTitle="Sign up with Facebook"
         btnType="facebook"
         color="#4867aa"
         backgroundColor="#e6eaf4"
@@ -61,7 +62,7 @@ const LoginScreen = ({navigation}: any) => {
       />
 
       <SocialButton
-        buttonTitle="Sign in with Google"
+        buttonTitle="Sign up with Google"
         btnType="google"
         color="#de4d41"
         backgroundColor="#f5e7ea"
@@ -71,14 +72,12 @@ const LoginScreen = ({navigation}: any) => {
       <TouchableOpacity
         style={styles.forgotButton}
         onPress={() => {
-          navigation.navigate('Signup');
+          navigation.navigate('Login');
         }}>
-        <Text style={styles.navButtonText}>
-          Don't have account? Create here
-        </Text>
+        <Text style={styles.navButtonText}>Have an account? Sign In </Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default LoginScreen;
+export default SignupScreen;
