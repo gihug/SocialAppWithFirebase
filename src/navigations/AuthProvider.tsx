@@ -1,10 +1,15 @@
 import React, {createContext, useState} from 'react';
 import auth from '@react-native-firebase/auth';
 
+export interface User {
+  email: string;
+  password: string;
+}
+
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({children}: any) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   return (
     <AuthContext.Provider
       value={{
@@ -32,7 +37,7 @@ export const AuthProvider = ({children}: any) => {
           }
         },
       }}>
-      {{children}}
+      {children}
     </AuthContext.Provider>
   );
 };

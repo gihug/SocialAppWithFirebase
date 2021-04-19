@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   Alert,
   Image,
@@ -11,12 +11,16 @@ import {
 import FormButton from '../../components/form-button/FormButton';
 import FormInput from '../../components/form-input/FormInput';
 import SocialButton from '../../components/social-button/SocialButton';
+import {AuthContext} from '../../navigations/AuthProvider';
 import styles from './SignupScreen.css';
 
 const SignupScreen = ({navigation}: any) => {
   const [email, setEmail] = useState<String>();
   const [password, setPassword] = useState<String>();
   const [confirmPassword, setConfirmPassword] = useState<String>();
+
+  const {register}: any = useContext(AuthContext);
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Create an account</Text>
@@ -50,7 +54,7 @@ const SignupScreen = ({navigation}: any) => {
 
       <FormButton
         buttonTitle="Sign up"
-        onPress={() => Alert.alert('Sign up Clicked!')}
+        onPress={() => register(email, password)}
       />
 
       <SocialButton
